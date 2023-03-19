@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>UserInterface.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+UserInterface.h</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 22.05.2022.</span>
+<span class="s0">//</span>
+
+<span class="s2">#ifndef </span><span class="s1">PROIECT_SDA_314_USERINTERFACE_H</span>
+<span class="s2">#define </span><span class="s1">PROIECT_SDA_314_USERINTERFACE_H</span>
+<span class="s2">#include </span><span class="s3">&quot;Service.h&quot;</span>
+
+<span class="s4">class </span><span class="s1">UserInterface {</span>
+<span class="s4">public</span><span class="s1">:</span>
+    <span class="s1">UserInterface()</span><span class="s4">;</span>
+    <span class="s1">UserInterface(</span><span class="s4">const </span><span class="s1">Service &amp;s)</span><span class="s4">;</span>
+    <span class="s1">~UserInterface()</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">runMenu()</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">showMenu()</span><span class="s4">;</span>
+
+<span class="s4">private</span><span class="s1">:</span>
+    <span class="s1">Service srv</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">listUsers()</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">addUser()</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">deleteUser()</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">addFriendship()</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">removeFriendship()</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">listFriends()</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">addMessage()</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">removeMessage()</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">listMessages()</span><span class="s4">;</span>
+<span class="s1">}</span><span class="s4">;</span>
+
+
+<span class="s2">#endif </span><span class="s0">//PROIECT_SDA_314_USERINTERFACE_H</span>
+</pre>
+</body>
+</html>

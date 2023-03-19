@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Repository.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Repository.h</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 22.05.2022.</span>
+<span class="s0">//</span>
+
+<span class="s2">#ifndef </span><span class="s1">PROIECT_SDA_314_REPOSITORY_H</span>
+<span class="s2">#define </span><span class="s1">PROIECT_SDA_314_REPOSITORY_H</span>
+<span class="s2">#include </span><span class="s3">&quot;User.h&quot;</span>
+<span class="s2">#include </span><span class="s3">&quot;Message.h&quot;</span>
+<span class="s2">#include </span><span class="s3">&quot;Friendship.h&quot;</span>
+<span class="s2">#include </span><span class="s3">&quot;Array.h&quot;</span>
+<span class="s2">#include </span><span class="s3">&quot;OrderedSet.h&quot;</span>
+
+<span class="s4">class </span><span class="s1">Repository {</span>
+<span class="s4">private</span><span class="s1">:</span>
+    <span class="s1">OrderedSet&lt;User&gt; utilizatori</span><span class="s4">;</span>
+    <span class="s1">Array&lt;Friendship&gt; prietenie</span><span class="s4">;</span>
+    <span class="s1">Array&lt;Message&gt; mesaje</span><span class="s4">;</span>
+<span class="s4">public</span><span class="s1">:</span>
+    <span class="s0">//definim constructor fara parametrii</span>
+    <span class="s1">Repository()</span><span class="s4">;</span>
+    <span class="s0">//copiere</span>
+    <span class="s1">Repository(</span><span class="s4">const </span><span class="s1">Repository &amp;r)</span><span class="s4">;</span>
+    <span class="s0">//getteri</span>
+    <span class="s1">OrderedSet&lt;User&gt;&amp; getUtilizatori()</span><span class="s4">;</span>
+    <span class="s1">Array&lt;Friendship&gt;&amp; getPrieteni()</span><span class="s4">;</span>
+    <span class="s1">Array&lt;Message&gt;&amp; getMesaje()</span><span class="s4">;</span>
+
+    <span class="s0">//operatii de tip CRUD pt entitatea Utilizator</span>
+    <span class="s4">int </span><span class="s1">adaugaUtilizator(</span><span class="s4">const </span><span class="s1">User &amp;u)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">stergeUtilizator(User &amp;u)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">cautaUtilizator(User &amp;u)</span><span class="s4">;</span>
+
+    <span class="s0">//operatii de tip CRUD pt entitatea Prietenie</span>
+    <span class="s4">int </span><span class="s1">adaugaPrietenie(Friendship &amp;f)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">stergePrietenie(Friendship &amp;f)</span><span class="s4">;</span>
+
+    <span class="s0">//operatii de tip CRUD pt entitatea Mesaj</span>
+    <span class="s4">int </span><span class="s1">adaugaMesaj(Message &amp;m)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">stergeMesaj(Message &amp;m)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">modificaMesaj(Message &amp;m</span><span class="s4">, </span><span class="s1">string &amp;noul_text)</span><span class="s4">;</span>
+
+
+    <span class="s0">//operatorul de atribuire</span>
+    <span class="s1">Repository&amp; </span><span class="s4">operator</span><span class="s1">=(</span><span class="s4">const </span><span class="s1">Repository &amp;r)</span><span class="s4">;</span>
+<span class="s1">}</span><span class="s4">;</span>
+
+
+
+<span class="s2">#endif </span><span class="s0">//PROIECT_SDA_314_REPOSITORY_H</span>
+</pre>
+</body>
+</html>

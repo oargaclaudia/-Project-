@@ -1,0 +1,263 @@
+<html>
+<head>
+<title>User.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+User.cpp</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 21.05.2022.</span>
+<span class="s0">//</span>
+
+
+<span class="s2">#include </span><span class="s3">&lt;iostream&gt;</span>
+<span class="s2">#include </span><span class="s3">&quot;User.h&quot;</span>
+<span class="s4">using namespace </span><span class="s1">std</span><span class="s4">;</span>
+<span class="s0">//constructor fara parametrii, cel implicit</span>
+<span class="s1">User::User() {</span>
+    <span class="s4">this</span><span class="s1">-&gt;idUtilizator = </span><span class="s3">&quot;&quot;</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;username = </span><span class="s3">&quot;&quot;</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;nume = </span><span class="s3">&quot;&quot;</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;prenume = </span><span class="s3">&quot;&quot;</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;email = </span><span class="s3">&quot;&quot;</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;parola = </span><span class="s3">&quot;&quot;</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;bibliografie = </span><span class="s3">&quot;&quot;</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;inf_suplimentare = </span><span class="s3">&quot;&quot;</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//constructor cu parametrii</span>
+<span class="s1">User::User(</span><span class="s4">const </span><span class="s1">std::string&amp; idUtilizator</span><span class="s4">, const </span><span class="s1">std::string&amp; username</span><span class="s4">, const </span><span class="s1">std::string&amp; nume</span><span class="s4">, const </span><span class="s1">std::string&amp; prenume</span><span class="s4">, const </span><span class="s1">std::string&amp; email</span><span class="s4">, const </span><span class="s1">std::string&amp; parola</span><span class="s4">, const </span><span class="s1">std::string&amp; bibliografie</span><span class="s4">, const </span><span class="s1">std::string&amp; info_suplimentare)</span>
+<span class="s1">{</span>
+    <span class="s4">this</span><span class="s1">-&gt;idUtilizator = idUtilizator</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;username = username</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;nume = nume</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;prenume = prenume</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;email = email</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;parola = parola</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;bibliografie = bibliografie</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;inf_suplimentare = info_suplimentare</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//operatorul de copiere</span>
+<span class="s1">User::User(</span><span class="s4">const </span><span class="s1">User &amp;alt_utilizator) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;idUtilizator = alt_utilizator.idUtilizator</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;username = alt_utilizator.username</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;nume = alt_utilizator.nume</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;prenume = alt_utilizator.prenume</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;email = alt_utilizator.email</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;parola = alt_utilizator.parola</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;bibliografie=alt_utilizator.bibliografie</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;inf_suplimentare=alt_utilizator.inf_suplimentare</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s0">//destructor</span>
+<span class="s1">User::~User() = </span><span class="s4">default;</span>
+
+<span class="s0">//definirea getterilor</span>
+<span class="s1">std::string User::getIdUtilizator() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;idUtilizator</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s1">std::string User::getUsername() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;username</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s1">std::string User::getNume() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;nume</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s1">std::string User::getPrenume() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;prenume</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s1">std::string User::getEmail() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;email</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s1">std::string User::getParola() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;parola</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s1">std::string User::getBibliografie() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;bibliografie</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s1">std::string User::getInfoSuplimentare() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;inf_suplimentare</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//definim setteri</span>
+<span class="s4">void </span><span class="s1">User::setIdUtilizator(</span><span class="s4">const </span><span class="s1">std::string &amp;id) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;idUtilizator = id</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s4">void </span><span class="s1">User::setNume(</span><span class="s4">const </span><span class="s1">std::string &amp;n) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;nume = n</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s4">void </span><span class="s1">User::setPrenume(</span><span class="s4">const </span><span class="s1">std::string &amp;p) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;prenume = p</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s4">void </span><span class="s1">User::setUsername(</span><span class="s4">const </span><span class="s1">std::string &amp;u) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;username = u</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s4">void </span><span class="s1">User::setBibliografie(</span><span class="s4">const </span><span class="s1">std::string &amp;b) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;bibliografie = b</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s4">void </span><span class="s1">User::setEmail(</span><span class="s4">const </span><span class="s1">std::string &amp;e) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;email = e</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s4">void </span><span class="s1">User::setInfoSuplimentare(</span><span class="s4">const </span><span class="s1">std::string &amp;info_suplimentaree) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;inf_suplimentare = info_suplimentaree</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">User::setParola(</span><span class="s4">const </span><span class="s1">std::string &amp;parolaa) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;parola = parolaa</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//operatorul de afisare</span>
+<span class="s1">std::ostream&amp; </span><span class="s4">operator</span><span class="s1">&lt;&lt;(std::ostream&amp;os</span><span class="s4">, const </span><span class="s1">User&amp; utilizatorr)</span>
+<span class="s1">{</span>
+    <span class="s1">os&lt;&lt;</span><span class="s3">&quot;ID Utilizator: &quot; </span><span class="s1">&lt;&lt; utilizatorr.idUtilizator&lt;&lt;std::endl</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;</span><span class="s3">&quot;Nume Utilizator:  &quot;</span><span class="s1">&lt;&lt;utilizatorr.nume&lt;&lt;std::endl</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;</span><span class="s3">&quot;Prenume Utilizator: &quot;</span><span class="s1">&lt;&lt;utilizatorr.prenume&lt;&lt;std::endl</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;</span><span class="s3">&quot;Username Utilizator: &quot;</span><span class="s1">&lt;&lt;utilizatorr.username&lt;&lt;std::endl</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;</span><span class="s3">&quot;Email Utilizator: &quot;</span><span class="s1">&lt;&lt;utilizatorr.email&lt;&lt;std::endl</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;</span><span class="s3">&quot;Parola Utilizator: &quot;</span><span class="s1">&lt;&lt;utilizatorr.parola&lt;&lt;std::endl</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;</span><span class="s3">&quot;Bibliografie Utilizator: &quot;</span><span class="s1">&lt;&lt;utilizatorr.bibliografie&lt;&lt;std::endl</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;</span><span class="s3">&quot;Informatii suplimentare: &quot;</span><span class="s1">&lt;&lt;utilizatorr.inf_suplimentare&lt;&lt;std::endl</span><span class="s4">;</span>
+    <span class="s4">return </span><span class="s1">os</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s0">//operatorul de citire</span>
+<span class="s1">std::istream&amp; </span><span class="s4">operator</span><span class="s1">&gt;&gt;(std::istream&amp; is</span><span class="s4">, </span><span class="s1">User&amp; utilizator)</span>
+<span class="s1">{std::string idUtilizator</span><span class="s4">;</span>
+    <span class="s1">std::string numeUtilizator</span><span class="s4">;</span>
+    <span class="s1">std::string prenumeUtilizator</span><span class="s4">;</span>
+    <span class="s1">std::string usernameUtilizator</span><span class="s4">;</span>
+    <span class="s1">std::string emailUtilizator</span><span class="s4">;</span>
+    <span class="s1">std::string parolaUtilizator</span><span class="s4">;</span>
+    <span class="s1">std::string bibliografieUtilizator</span><span class="s4">;</span>
+    <span class="s1">std::string informatiiSup</span><span class="s4">;</span>
+
+    <span class="s1">std::cout &lt;&lt; </span><span class="s3">&quot;Id utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">is &gt;&gt; idUtilizator</span><span class="s4">;</span>
+
+    <span class="s1">std::cout &lt;&lt; </span><span class="s3">&quot;Nume utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">is &gt;&gt; numeUtilizator</span><span class="s4">;</span>
+
+    <span class="s1">std::cout &lt;&lt; </span><span class="s3">&quot;Prenume utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">is &gt;&gt; prenumeUtilizator</span><span class="s4">;</span>
+
+    <span class="s1">std::cout &lt;&lt; </span><span class="s3">&quot;Username utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">is &gt;&gt; usernameUtilizator</span><span class="s4">;</span>
+
+    <span class="s1">std::cout &lt;&lt; </span><span class="s3">&quot;Email utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">is &gt;&gt; emailUtilizator</span><span class="s4">;</span>
+
+    <span class="s1">std::cout &lt;&lt; </span><span class="s3">&quot;Parola utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">is &gt;&gt; parolaUtilizator</span><span class="s4">;</span>
+
+    <span class="s1">std::cout &lt;&lt; </span><span class="s3">&quot;Bibliografie utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">is &gt;&gt; bibliografieUtilizator</span><span class="s4">;</span>
+
+    <span class="s1">std::cout &lt;&lt; </span><span class="s3">&quot;Informatii suplimentare: &quot;</span><span class="s4">;</span>
+    <span class="s1">is &gt;&gt; informatiiSup</span><span class="s4">;</span>
+
+    <span class="s1">utilizator.idUtilizator = idUtilizator</span><span class="s4">;</span>
+    <span class="s1">utilizator.nume = numeUtilizator</span><span class="s4">;</span>
+    <span class="s1">utilizator.prenume = prenumeUtilizator</span><span class="s4">;</span>
+    <span class="s1">utilizator.username= usernameUtilizator</span><span class="s4">;</span>
+    <span class="s1">utilizator.email = emailUtilizator</span><span class="s4">;</span>
+    <span class="s1">utilizator.parola = parolaUtilizator</span><span class="s4">;</span>
+    <span class="s1">utilizator.inf_suplimentare = informatiiSup</span><span class="s4">;</span>
+    <span class="s1">utilizator.bibliografie = bibliografieUtilizator</span><span class="s4">;</span>
+
+    <span class="s4">return </span><span class="s1">is</span><span class="s4">;</span>
+
+<span class="s1">}</span>
+<span class="s0">//operatorul de egalitate</span>
+<span class="s4">bool </span><span class="s1">User::</span><span class="s4">operator</span><span class="s1">==(</span><span class="s4">const </span><span class="s1">User &amp;alt_utilizator) {</span>
+    <span class="s4">return </span><span class="s1">((</span><span class="s4">this</span><span class="s1">-&gt;idUtilizator == alt_utilizator.idUtilizator) &amp;&amp; (</span><span class="s4">this</span><span class="s1">-&gt;nume == alt_utilizator.nume) &amp;&amp;</span>
+            <span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;prenume == alt_utilizator.prenume) &amp;&amp; (</span><span class="s4">this</span><span class="s1">-&gt;email == alt_utilizator.email) &amp;&amp;</span>
+            <span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;parola == alt_utilizator.parola) &amp;&amp; (</span><span class="s4">this</span><span class="s1">-&gt;inf_suplimentare == alt_utilizator.inf_suplimentare) &amp;&amp;</span>
+            <span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;bibliografie == alt_utilizator.bibliografie))</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//operatorul de atribuire</span>
+<span class="s1">User &amp;User::</span><span class="s4">operator</span><span class="s1">=(</span><span class="s4">const </span><span class="s1">User &amp;u) {</span>
+    <span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">!=&amp;u) {</span>
+        <span class="s4">this</span><span class="s1">-&gt;idUtilizator = u.idUtilizator</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;nume = u.nume</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;prenume = u.prenume</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;username = u.username</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;parola = u.parola</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;email = u.email</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;bibliografie = u.bibliografie</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;inf_suplimentare = u.inf_suplimentare</span><span class="s4">;</span>
+    <span class="s1">}</span>
+    <span class="s4">return </span><span class="s1">*</span><span class="s4">this;</span>
+<span class="s1">}</span>
+
+<span class="s0">//operatorul &gt;</span>
+<span class="s4">bool </span><span class="s1">User::</span><span class="s4">operator</span><span class="s1">&gt;(</span><span class="s4">const </span><span class="s1">User &amp;alt_utilizator) {</span>
+    <span class="s4">return </span><span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;idUtilizator &gt; alt_utilizator.idUtilizator)</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//operatorul &lt;</span>
+<span class="s4">bool </span><span class="s1">User::</span><span class="s4">operator</span><span class="s1">&lt;(</span><span class="s4">const </span><span class="s1">User &amp;alt_utilizator) {</span>
+    <span class="s4">return </span><span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;idUtilizator &lt; alt_utilizator.idUtilizator)</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//descarca informatia utila dintr-un fisier</span>
+<span class="s1">std::ostream &amp;loadIntoCSV(ostream &amp;os</span><span class="s4">, </span><span class="s1">User &amp;utilizator) {</span>
+    <span class="s1">os &lt;&lt; utilizator.idUtilizator&lt;&lt;</span><span class="s3">&quot;,&quot;</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;utilizator.username&lt;&lt;</span><span class="s3">&quot;,&quot;</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;utilizator.nume&lt;&lt;</span><span class="s3">&quot;,&quot;</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;utilizator.prenume&lt;&lt;</span><span class="s3">&quot;,&quot;</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;utilizator.email&lt;&lt;</span><span class="s3">&quot;,&quot;</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;utilizator.parola&lt;&lt;</span><span class="s3">&quot;,&quot;</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;utilizator.bibliografie&lt;&lt;</span><span class="s3">&quot;,&quot;</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;utilizator.inf_suplimentare&lt;&lt;</span><span class="s3">&quot;,&quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s4">return </span><span class="s1">os</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//incarca informatia utila intr-un fisier</span>
+<span class="s1">std::istream &amp;loadFromCSV(istream &amp;is</span><span class="s4">, </span><span class="s1">User &amp;utilizator) {</span>
+    <span class="s1">string idUtilizator</span><span class="s4">;</span>
+    <span class="s1">string nume</span><span class="s4">;</span>
+    <span class="s1">string prenume</span><span class="s4">;</span>
+    <span class="s1">string username</span><span class="s4">;</span>
+    <span class="s1">string email</span><span class="s4">;</span>
+    <span class="s1">string parola</span><span class="s4">;</span>
+    <span class="s1">string bibliografie</span><span class="s4">;</span>
+    <span class="s1">string inf_suplimentare</span><span class="s4">;</span>
+
+    <span class="s1">std::getline(is</span><span class="s4">, </span><span class="s1">idUtilizator</span><span class="s4">, </span><span class="s3">','</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">std::getline(is</span><span class="s4">, </span><span class="s1">nume</span><span class="s4">, </span><span class="s3">','</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">std::getline(is</span><span class="s4">, </span><span class="s1">prenume</span><span class="s4">, </span><span class="s3">','</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">std::getline(is</span><span class="s4">, </span><span class="s1">username</span><span class="s4">, </span><span class="s3">','</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">std::getline(is</span><span class="s4">, </span><span class="s1">email</span><span class="s4">, </span><span class="s3">','</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">std::getline(is</span><span class="s4">, </span><span class="s1">parola</span><span class="s4">, </span><span class="s3">','</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">getline(is</span><span class="s4">, </span><span class="s1">bibliografie</span><span class="s4">, </span><span class="s3">','</span><span class="s1">)</span><span class="s4">;</span>
+    <span class="s1">getline(is</span><span class="s4">, </span><span class="s1">inf_suplimentare</span><span class="s4">, </span><span class="s3">'</span><span class="s4">\n</span><span class="s3">'</span><span class="s1">)</span><span class="s4">;</span>
+
+    <span class="s1">utilizator.idUtilizator = idUtilizator</span><span class="s4">;</span>
+    <span class="s1">utilizator.nume= nume</span><span class="s4">;</span>
+    <span class="s1">utilizator.prenume = prenume</span><span class="s4">;</span>
+    <span class="s1">utilizator.username=username</span><span class="s4">;</span>
+    <span class="s1">utilizator.email = email</span><span class="s4">;</span>
+    <span class="s1">utilizator.parola = parola</span><span class="s4">;</span>
+    <span class="s1">utilizator.bibliografie = bibliografie</span><span class="s4">;</span>
+    <span class="s1">utilizator.inf_suplimentare = inf_suplimentare</span><span class="s4">;</span>
+
+    <span class="s4">return </span><span class="s1">is</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//operatorul !=</span>
+<span class="s4">bool </span><span class="s1">User::</span><span class="s4">operator</span><span class="s1">!=(</span><span class="s4">const </span><span class="s1">User &amp;alt_utilizator) {</span>
+    <span class="s4">return </span><span class="s1">!(*</span><span class="s4">this</span><span class="s1">==alt_utilizator)</span><span class="s4">;</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

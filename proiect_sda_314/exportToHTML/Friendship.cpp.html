@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Friendship.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Friendship.cpp</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 21.05.2022.</span>
+<span class="s0">//</span>
+
+<span class="s2">#include </span><span class="s3">&quot;Friendship.h&quot;</span>
+
+<span class="s0">//definim constructorul fara parametrii, adica cel implicit</span>
+<span class="s1">Friendship::Friendship() = </span><span class="s4">default;</span>
+
+<span class="s0">//definim constructorul cu parametrii</span>
+<span class="s1">Friendship::Friendship(User &amp;prieten1</span><span class="s4">, </span><span class="s1">User &amp;prieten2) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;prieten1 = prieten1</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;prieten2 = prieten2</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//destructorul</span>
+<span class="s1">Friendship::~Friendship() = </span><span class="s4">default;</span>
+
+<span class="s0">//getterii</span>
+<span class="s1">User Friendship::getPrimulPrieten() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;prieten1</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s1">User Friendship::getAlDoileaPrieten() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;prieten2</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//setterii</span>
+<span class="s4">void </span><span class="s1">Friendship::setPrimulPrieten(</span><span class="s4">const </span><span class="s1">User &amp;prieten1) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;prieten1 = prieten1</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">Friendship::setAlDoileaPrieten(</span><span class="s4">const </span><span class="s1">User &amp;prieten2) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;prieten2 = prieten2</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//operatorul de egalitate</span>
+<span class="s4">bool </span><span class="s1">Friendship::</span><span class="s4">operator</span><span class="s1">==(</span><span class="s4">const </span><span class="s1">Friendship &amp;m)  {</span>
+    <span class="s4">if </span><span class="s1">((</span><span class="s4">this</span><span class="s1">-&gt;prieten1 == m.prieten1 &amp;&amp; </span><span class="s4">this</span><span class="s1">-&gt;prieten2 == m.prieten2) || (</span><span class="s4">this</span><span class="s1">-&gt;prieten1 == m.prieten2 &amp;&amp; </span><span class="s4">this</span><span class="s1">-&gt;prieten2 == m.prieten1))</span>
+        <span class="s4">return true;</span>
+
+    <span class="s4">return false;</span>
+<span class="s1">}</span>
+
+<span class="s0">//operatorul de atribuire</span>
+<span class="s1">Friendship &amp;Friendship::</span><span class="s4">operator</span><span class="s1">=(</span><span class="s4">const </span><span class="s1">Friendship &amp;e) {</span>
+    <span class="s4">if </span><span class="s1">(</span><span class="s4">this </span><span class="s1">!= &amp;e) {</span>
+        <span class="s4">this</span><span class="s1">-&gt;setPrimulPrieten(e.prieten1)</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;setAlDoileaPrieten(e.prieten2)</span><span class="s4">;</span>
+    <span class="s1">}</span>
+    <span class="s4">return </span><span class="s1">*</span><span class="s4">this;</span>
+<span class="s1">}</span>
+
+<span class="s0">//operatorul !=</span>
+<span class="s4">bool </span><span class="s1">Friendship::</span><span class="s4">operator</span><span class="s1">!=(</span><span class="s4">const </span><span class="s1">Friendship &amp;m) {</span>
+    <span class="s4">return </span><span class="s1">!(*</span><span class="s4">this</span><span class="s1">==m)</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s0">//operatorul de afisare</span>
+<span class="s1">ostream &amp;</span><span class="s4">operator</span><span class="s1">&lt;&lt;(ostream &amp;os</span><span class="s4">, </span><span class="s1">Friendship prietenie) {</span>
+    <span class="s1">os&lt;&lt;</span><span class="s3">&quot;Primul prieten: &quot; </span><span class="s1">&lt;&lt; prietenie.prieten1</span><span class="s4">;</span>
+    <span class="s1">os&lt;&lt;</span><span class="s3">&quot;Al doilea prieten: &quot;</span><span class="s1">&lt;&lt;prietenie.prieten2</span><span class="s4">;</span>
+    <span class="s4">return </span><span class="s1">os</span><span class="s4">;</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

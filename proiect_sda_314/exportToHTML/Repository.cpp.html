@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>Repository.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+.s5 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Repository.cpp</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 22.05.2022.</span>
+<span class="s0">//</span>
+
+<span class="s2">#include </span><span class="s3">&quot;Repository.h&quot;</span>
+<span class="s1">Repository::Repository() {</span>
+
+<span class="s1">}</span>
+<span class="s1">Repository::Repository(</span><span class="s4">const </span><span class="s1">Repository &amp;r) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;utilizatori=r.utilizatori</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;mesaje = r.mesaje</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;prietenie = r.prietenie</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s1">Repository &amp;Repository::</span><span class="s4">operator</span><span class="s1">=(</span><span class="s4">const </span><span class="s1">Repository &amp;r) {</span>
+    <span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">!=&amp;r)</span>
+    <span class="s1">{</span><span class="s4">this</span><span class="s1">-&gt;utilizatori=r.utilizatori</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;mesaje=r.mesaje</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;prietenie=r.prietenie</span><span class="s4">;</span>
+    <span class="s1">}</span>
+    <span class="s4">return </span><span class="s1">*</span><span class="s4">this;</span>
+<span class="s1">}</span>
+
+
+
+<span class="s1">Array&lt;Message&gt; &amp;Repository::getMesaje() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;mesaje</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s1">Array&lt;Friendship&gt; &amp;Repository::getPrieteni() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;prietenie</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s1">OrderedSet&lt;User&gt; &amp;Repository::getUtilizatori() {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;utilizatori</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">int </span><span class="s1">Repository::adaugaUtilizator(</span><span class="s4">const </span><span class="s1">User &amp;u) {</span>
+    <span class="s4">int </span><span class="s1">verif</span><span class="s4">;</span>
+    <span class="s1">verif = </span><span class="s4">this</span><span class="s1">-&gt;getUtilizatori().adaugare(u)</span><span class="s4">;</span>
+    <span class="s4">return </span><span class="s1">verif</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">int </span><span class="s1">Repository::stergeUtilizator(User &amp;u) {</span>
+    <span class="s4">int </span><span class="s1">verif</span><span class="s4">;</span>
+    <span class="s1">verif = </span><span class="s4">this</span><span class="s1">-&gt;getUtilizatori().stergere(u)</span><span class="s4">;</span>
+    <span class="s4">return </span><span class="s1">verif</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">int </span><span class="s1">Repository::cautaUtilizator(User &amp;u) {</span>
+    <span class="s4">return this</span><span class="s1">-&gt;utilizatori.find(u)</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">int </span><span class="s1">Repository::stergeMesaj(Message &amp;m) {</span>
+    <span class="s4">int </span><span class="s1">verif</span><span class="s4">;</span>
+    <span class="s1">verif = </span><span class="s4">this</span><span class="s1">-&gt;mesaje.verifDelete(m)</span><span class="s4">;</span>
+    <span class="s4">return </span><span class="s1">verif</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">int </span><span class="s1">Repository::stergePrietenie(Friendship &amp;f) {</span>
+    <span class="s4">int </span><span class="s1">verif</span><span class="s4">;</span>
+    <span class="s1">verif = </span><span class="s4">this</span><span class="s1">-&gt;prietenie.verifDelete(f)</span><span class="s4">;</span>
+    <span class="s4">return </span><span class="s1">verif</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">int </span><span class="s1">Repository::modificaMesaj(Message &amp;m</span><span class="s4">, </span><span class="s1">string&amp; noul_text) {</span>
+    <span class="s1">Message mesajNou = Message(m.getSender()</span><span class="s4">, </span><span class="s1">m.getReceiver()</span><span class="s4">, </span><span class="s1">noul_text)</span><span class="s4">;</span>
+    <span class="s4">return this</span><span class="s1">-&gt;mesaje.verifUpdate(m</span><span class="s4">, </span><span class="s1">mesajNou)</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">int </span><span class="s1">Repository::adaugaMesaj(Message &amp;m) {</span>
+    <span class="s4">int </span><span class="s1">f1 = </span><span class="s4">this</span><span class="s1">-&gt;utilizatori.find(m.getSender())</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">f2 = </span><span class="s4">this</span><span class="s1">-&gt;utilizatori.find(m.getReceiver())</span><span class="s4">;</span>
+    <span class="s4">if </span><span class="s1">(f1==</span><span class="s5">0</span><span class="s1">)</span>
+        <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+    <span class="s4">if </span><span class="s1">(f2==</span><span class="s5">0</span><span class="s1">)</span>
+        <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;mesaje.add(m)</span><span class="s4">;</span>
+    <span class="s4">return </span><span class="s5">1</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">int </span><span class="s1">Repository::adaugaPrietenie(Friendship &amp;f) {</span>
+    <span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;prietenie.findElement(f)!=-</span><span class="s5">1</span><span class="s1">)</span>
+        <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+    <span class="s4">else</span>
+    <span class="s1">{</span>
+        <span class="s4">int </span><span class="s1">prieten1</span><span class="s4">,</span><span class="s1">prieten2</span><span class="s4">;</span>
+        <span class="s1">prieten1= </span><span class="s4">this</span><span class="s1">-&gt;utilizatori.find(f.getPrimulPrieten())</span><span class="s4">;</span><span class="s0">//vezi daca gaseste primul prieten</span>
+        <span class="s1">prieten2 = </span><span class="s4">this</span><span class="s1">-&gt;utilizatori.find(f.getAlDoileaPrieten())</span><span class="s4">;</span>
+        <span class="s4">if</span><span class="s1">(prieten1 == </span><span class="s5">0</span><span class="s1">)</span>
+            <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(prieten2 ==</span><span class="s5">0</span><span class="s1">)</span>
+            <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;prietenie.add(f)</span><span class="s4">;</span>
+        <span class="s4">return </span><span class="s5">1</span><span class="s4">;</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

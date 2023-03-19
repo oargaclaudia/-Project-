@@ -1,0 +1,478 @@
+<html>
+<head>
+<title>UserInterface.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+.s5 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+UserInterface.cpp</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 22.05.2022.</span>
+<span class="s0">//</span>
+
+<span class="s2">#include </span><span class="s3">&quot;Message.h&quot;</span>
+<span class="s2">#include </span><span class="s3">&lt;iostream&gt;</span>
+<span class="s4">using namespace </span><span class="s1">std</span><span class="s4">;</span>
+<span class="s2">#include </span><span class="s3">&quot;UserInterface.h&quot;</span>
+<span class="s1">UserInterface::UserInterface() {</span>
+
+<span class="s1">}</span>
+<span class="s1">UserInterface::UserInterface(</span><span class="s4">const </span><span class="s1">Service &amp;s) {</span>
+    <span class="s4">this</span><span class="s1">-&gt;srv=s</span><span class="s4">;</span>
+<span class="s1">}</span>
+<span class="s1">UserInterface::~UserInterface() {</span>
+
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">UserInterface::showMenu() {</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;1. Adauga un utilizator in retea. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;2. Sterge un utilizator din retea. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;3. Afiseaza toti utilizatorii din retea. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;4. Adauga un mesaj in retea. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;5. Sterge un mesaj din retea. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;6. Actualizeaza un mesaj din reta. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;7. Afiseaza mesajele din retea. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;8. Adauga o relatie de prietenie intre utilizatori. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;9. Sterge o relatie de prietenie intre utilizatorii. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;10. Afiseaza toate prieteniile din retea. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;11. Iesire. &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">UserInterface::addUser() {</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati id-ul utilizatorului: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">string ID</span><span class="s4">;</span>
+    <span class="s1">cin&gt;&gt;ID</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati username-ul utilizatorului: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">cin.get()</span><span class="s4">;</span>
+    <span class="s1">string username</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">username)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati numele utilizatorului: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string nume</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">nume)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati prenumele utilizatorului: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string prenume</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">prenume)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati emailul utilizatorului: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string email</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">email)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati parola utilizatorului: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string parola</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">parola)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati bibliografia utilizatorului: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string bibliografie</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">bibliografie)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati alte informatii suplimentare: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string infoplus</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">infoplus)</span><span class="s4">;</span>
+
+    <span class="s4">int </span><span class="s1">rezultat = </span><span class="s4">this</span><span class="s1">-&gt;srv.adaugaUtilizator(ID</span><span class="s4">, </span><span class="s1">username</span><span class="s4">, </span><span class="s1">nume</span><span class="s4">, </span><span class="s1">prenume</span><span class="s4">, </span><span class="s1">email</span><span class="s4">, </span><span class="s1">parola</span><span class="s4">, </span><span class="s1">bibliografie</span><span class="s4">, </span><span class="s1">infoplus)</span><span class="s4">;</span>
+    <span class="s4">if </span><span class="s1">(rezultat)</span>
+        <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Utilizator adaugat! &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s4">else </span><span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Utilizatorul nu a putut fi adaugat!&quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">UserInterface::deleteUser() {</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati id-ul utilizatorului de sters: &quot;</span><span class="s4">;</span>
+    <span class="s1">string ID</span><span class="s4">;</span>
+    <span class="s1">cin&gt;&gt;ID</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati username-ul utilizatorului de sters: &quot;</span><span class="s4">;</span>
+    <span class="s1">cin.get()</span><span class="s4">;</span>
+    <span class="s1">string username</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">username)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati numele utilizatorului de sters: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string nume</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">nume)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati prenumele utilizatorului de sters: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string prenume</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">prenume)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati emailul utilizatorului de sters: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string email</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">email)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati parola utilizatorului de sters: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string parola</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">parola)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati bibliografia utilizatorului de sters: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string bibliografie</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">bibliografie)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati alte informatii suplimentare de sters: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string infoplus</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">infoplus)</span><span class="s4">;</span>
+
+    <span class="s4">int </span><span class="s1">rezultat = </span><span class="s4">this</span><span class="s1">-&gt;srv.stergereUtilizator(ID</span><span class="s4">, </span><span class="s1">username</span><span class="s4">, </span><span class="s1">nume</span><span class="s4">, </span><span class="s1">prenume</span><span class="s4">, </span><span class="s1">email</span><span class="s4">, </span><span class="s1">parola</span><span class="s4">, </span><span class="s1">bibliografie</span><span class="s4">, </span><span class="s1">infoplus)</span><span class="s4">;</span>
+    <span class="s4">if </span><span class="s1">(rezultat)</span>
+        <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Utilizator sters!&quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s4">else </span><span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Utilizatorul nu a fost sters!&quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">UserInterface::listUsers() {</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Utilizatorii din aplicatie sunt: &quot;</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;srv.getUtilizatori().afisare()</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">UserInterface::addMessage() {</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati id-ul primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">string ID1</span><span class="s4">;</span>
+    <span class="s1">cin&gt;&gt;ID1</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati username-ul primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">cin.get()</span><span class="s4">;</span>
+    <span class="s1">string username1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">username1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati numele primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string nume1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">nume1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati prenumele primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string prenume1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">prenume1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati emailul primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string email1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">email1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati parola primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string parola1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">parola1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati bibliografia primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string bibliografie1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">bibliografie1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati alte informatii suplimentare despre primul utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string infoplus1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">infoplus1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati id-ul  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s1">string ID2</span><span class="s4">;</span>
+    <span class="s1">cin&gt;&gt;ID2</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati username-ul  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s1">cin.get()</span><span class="s4">;</span>
+    <span class="s1">string username2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">username2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati numele  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string nume2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">nume2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati prenumele  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string prenume2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">prenume2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati emailul  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string email2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">email2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati parola  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string parola2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">parola2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati bibliografia  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string bibliografie2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">bibliografie2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati alte informatii suplimentare despre  utilizatorul doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string infoplus2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">infoplus2)</span><span class="s4">;</span>
+    <span class="s1">string text</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati mesajul pe care vreti sa il transmiteti: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">text)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">rezultat = </span><span class="s4">this</span><span class="s1">-&gt;srv.adaugaMesaj(ID1</span><span class="s4">, </span><span class="s1">username1</span><span class="s4">, </span><span class="s1">nume1</span><span class="s4">, </span><span class="s1">prenume1</span><span class="s4">, </span><span class="s1">email1</span><span class="s4">, </span><span class="s1">parola1</span><span class="s4">, </span><span class="s1">bibliografie1</span><span class="s4">, </span><span class="s1">infoplus1</span><span class="s4">, </span><span class="s1">ID2</span><span class="s4">, </span><span class="s1">username2</span><span class="s4">, </span><span class="s1">nume2</span><span class="s4">, </span><span class="s1">prenume2</span><span class="s4">, </span><span class="s1">email2</span><span class="s4">, </span><span class="s1">parola2</span><span class="s4">, </span><span class="s1">bibliografie2</span><span class="s4">, </span><span class="s1">infoplus2</span><span class="s4">, </span><span class="s1">text)</span><span class="s4">;</span>
+    <span class="s4">if </span><span class="s1">(rezultat)</span>
+        <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Mesajul a fost adaugaut.&quot;</span><span class="s4">;</span>
+    <span class="s4">else </span><span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Mesajul nu a putut fi adaugat. &quot;</span><span class="s4">;</span>
+
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">UserInterface::removeMessage() {</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati id-ul primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">string ID1</span><span class="s4">;</span>
+    <span class="s1">cin&gt;&gt;ID1</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati username-ul primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">cin.get()</span><span class="s4">;</span>
+    <span class="s1">string username1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">username1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati numele primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string nume1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">nume1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati prenumele primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string prenume1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">prenume1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati emailul primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string email1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">email1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati parola primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string parola1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">parola1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati bibliografia primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string bibliografie1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">bibliografie1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati alte informatii suplimentare despre primul utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string infoplus1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">infoplus1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati id-ul  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s1">string ID2</span><span class="s4">;</span>
+    <span class="s1">cin&gt;&gt;ID2</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati username-ul  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s1">cin.get()</span><span class="s4">;</span>
+    <span class="s1">string username2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">username2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati numele  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string nume2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">nume2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati prenumele  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string prenume2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">prenume2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati emailul  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string email2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">email2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati parola  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string parola2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">parola2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati bibliografia  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string bibliografie2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">bibliografie2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati alte informatii suplimentare despre  utilizatorul doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string infoplus2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">infoplus2)</span><span class="s4">;</span>
+    <span class="s1">string text</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati mesajul pe care vreti sa il transmiteti: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">text)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">rezultat = </span><span class="s4">this</span><span class="s1">-&gt;srv.stergereMesaj(text</span><span class="s4">,</span><span class="s1">ID1</span><span class="s4">, </span><span class="s1">username1</span><span class="s4">, </span><span class="s1">nume1</span><span class="s4">, </span><span class="s1">prenume1</span><span class="s4">, </span><span class="s1">email1</span><span class="s4">, </span><span class="s1">parola1</span><span class="s4">, </span><span class="s1">bibliografie1</span><span class="s4">, </span><span class="s1">infoplus1</span><span class="s4">, </span><span class="s1">ID2</span><span class="s4">, </span><span class="s1">username2</span><span class="s4">, </span><span class="s1">nume2</span><span class="s4">, </span><span class="s1">prenume2</span><span class="s4">, </span><span class="s1">email2</span><span class="s4">, </span><span class="s1">parola2</span><span class="s4">, </span><span class="s1">bibliografie2</span><span class="s4">, </span><span class="s1">infoplus2 )</span><span class="s4">;</span>
+    <span class="s4">if </span><span class="s1">(rezultat)</span>
+        <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Mesajul a fost sters. &quot;</span><span class="s4">;</span>
+    <span class="s4">else </span><span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Mesajul nu a fost sters. &quot;</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+
+
+<span class="s4">void </span><span class="s1">UserInterface::listMessages() {</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Mesajele sunt: &quot;</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s1">-&gt;srv.getMesaje().afisare()</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">UserInterface::addFriendship() {</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati id-ul primului utilizator: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">string ID1</span><span class="s4">;</span>
+    <span class="s1">cin&gt;&gt;ID1</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati username-ul primului utilizator: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">cin.get()</span><span class="s4">;</span>
+    <span class="s1">string username1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">username1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati numele primului utilizator: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string nume1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">nume1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati prenumele primului utilizator: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string prenume1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">prenume1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati emailul primului utilizator: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string email1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">email1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati parola primului utilizator: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string parola1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">parola1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati bibliografia primului utilizator: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string bibliografie1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">bibliografie1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati alte informatii suplimentare despre primul utilizator: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string infoplus1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">infoplus1)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati id-ul  utilizatorului doi: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+
+    <span class="s1">string ID2</span><span class="s4">;</span>
+    <span class="s1">cin&gt;&gt;ID2</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati username-ul  utilizatorului doi: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">cin.get()</span><span class="s4">;</span>
+    <span class="s1">string username2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">username2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati numele  utilizatorului doi: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string nume2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">nume2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati prenumele  utilizatorului doi: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string prenume2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">prenume2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati emailul  utilizatorului doi: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">// cin.get();</span>
+    <span class="s1">string email2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">email2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati parola  utilizatorului doi: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">// cin.get();</span>
+    <span class="s1">string parola2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">,</span><span class="s1">parola2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati bibliografia  utilizatorului doi: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">// cin.get();</span>
+    <span class="s1">string bibliografie2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">bibliografie2)</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati alte informatii suplimentare despre  utilizatorul doi: &quot;</span><span class="s1">&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s0">// cin.get();</span>
+    <span class="s1">string infoplus2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">infoplus2)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">rezultat = </span><span class="s4">this</span><span class="s1">-&gt;srv.adaugaPrietenie(ID1</span><span class="s4">, </span><span class="s1">username1</span><span class="s4">, </span><span class="s1">nume1</span><span class="s4">, </span><span class="s1">prenume1</span><span class="s4">, </span><span class="s1">email1</span><span class="s4">, </span><span class="s1">parola1</span><span class="s4">, </span><span class="s1">bibliografie1</span><span class="s4">, </span><span class="s1">infoplus1</span><span class="s4">, </span><span class="s1">ID2</span><span class="s4">, </span><span class="s1">username2</span><span class="s4">, </span><span class="s1">nume2</span><span class="s4">, </span><span class="s1">prenume2</span><span class="s4">, </span><span class="s1">email2</span><span class="s4">, </span><span class="s1">parola2</span><span class="s4">, </span><span class="s1">bibliografie2</span><span class="s4">, </span><span class="s1">infoplus2)</span><span class="s4">;</span>
+    <span class="s4">if </span><span class="s1">(rezultat)</span>
+        <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Prietenia a fost adaugata.&quot;</span><span class="s4">;</span>
+    <span class="s4">else </span><span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Prietenia nu a fost adaugata. &quot;</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">UserInterface::removeFriendship() {</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati id-ul primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">string ID1</span><span class="s4">;</span>
+    <span class="s1">cin &gt;&gt; ID1</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati username-ul primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s1">cin.get()</span><span class="s4">;</span>
+    <span class="s1">string username1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">username1)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati numele primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string nume1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">nume1)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati prenumele primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string prenume1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">prenume1)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati emailul primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string email1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">email1)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati parola primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string parola1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">parola1)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati bibliografia primului utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string bibliografie1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">bibliografie1)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati alte informatii suplimentare despre primul utilizator: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string infoplus1</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">infoplus1)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati id-ul  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s1">string ID2</span><span class="s4">;</span>
+    <span class="s1">cin &gt;&gt; ID2</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati username-ul  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s1">cin.get()</span><span class="s4">;</span>
+    <span class="s1">string username2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">username2)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati numele  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string nume2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">nume2)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati prenumele  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string prenume2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">prenume2)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati emailul  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string email2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">email2)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati parola  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string parola2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">parola2)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati bibliografia  utilizatorului doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string bibliografie2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">bibliografie2)</span><span class="s4">;</span>
+    <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Dati alte informatii suplimentare despre  utilizatorul doi: &quot;</span><span class="s4">;</span>
+    <span class="s0">//cin.get();</span>
+    <span class="s1">string infoplus2</span><span class="s4">;</span>
+    <span class="s1">getline(cin</span><span class="s4">, </span><span class="s1">infoplus2)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">rezultat = </span><span class="s4">this</span><span class="s1">-&gt;srv.stergerePrietenie(ID1</span><span class="s4">, </span><span class="s1">username1</span><span class="s4">, </span><span class="s1">nume1</span><span class="s4">, </span><span class="s1">prenume1</span><span class="s4">, </span><span class="s1">email1</span><span class="s4">, </span><span class="s1">parola1</span><span class="s4">, </span><span class="s1">bibliografie1</span><span class="s4">,</span>
+                                               <span class="s1">infoplus1</span><span class="s4">, </span><span class="s1">ID2</span><span class="s4">, </span><span class="s1">username2</span><span class="s4">, </span><span class="s1">nume2</span><span class="s4">, </span><span class="s1">prenume2</span><span class="s4">, </span><span class="s1">email2</span><span class="s4">, </span><span class="s1">parola2</span><span class="s4">,</span>
+                                               <span class="s1">bibliografie2</span><span class="s4">, </span><span class="s1">infoplus2)</span><span class="s4">;</span>
+    <span class="s4">if </span><span class="s1">(rezultat)</span>
+        <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Prietenia a fost stearsa&quot;</span><span class="s4">;</span>
+    <span class="s4">else </span><span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Prietenia nu a fost stearsa.&quot;</span><span class="s4">;</span>
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">UserInterface::listFriends() {</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Prieteniile din aplicatie sunt: &quot;</span><span class="s4">;</span>
+    <span class="s1">Array&lt;Friendship&gt; friendships = </span><span class="s4">this</span><span class="s1">-&gt;srv.getRelatiiPrietenie()</span><span class="s4">;</span>
+
+    <span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s4">; </span><span class="s1">i &lt; friendships.GetDimCurenta()</span><span class="s4">; </span><span class="s1">i++) {</span>
+        <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;ID1: &quot;</span><span class="s1">&lt;&lt;friendships.getItem(i).getPrimulPrieten().getIdUtilizator() &lt;&lt;</span><span class="s3">&quot; ID2: &quot;</span><span class="s1">&lt;&lt;friendships.getItem(i).getAlDoileaPrieten().getIdUtilizator()&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+<span class="s4">void </span><span class="s1">UserInterface::runMenu() {</span>
+    <span class="s4">int </span><span class="s1">optiune</span><span class="s4">;</span>
+    <span class="s1">cout&lt;&lt;</span><span class="s3">&quot;Dati optiunea: &quot;</span><span class="s4">;</span>
+    <span class="s1">cin&gt;&gt;optiune</span><span class="s4">;</span>
+    <span class="s4">while </span><span class="s1">(optiune != </span><span class="s5">11</span><span class="s1">) {</span>
+        <span class="s4">if </span><span class="s1">(optiune == </span><span class="s5">1</span><span class="s1">)</span>
+            <span class="s1">UserInterface::addUser()</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(optiune == </span><span class="s5">2</span><span class="s1">)</span>
+            <span class="s1">UserInterface::deleteUser()</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(optiune == </span><span class="s5">3</span><span class="s1">)</span>
+            <span class="s1">UserInterface::listUsers()</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(optiune == </span><span class="s5">4</span><span class="s1">)</span>
+            <span class="s1">UserInterface::addMessage()</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(optiune == </span><span class="s5">5</span><span class="s1">)</span>
+            <span class="s1">UserInterface::removeMessage()</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(optiune == </span><span class="s5">7</span><span class="s1">)</span>
+            <span class="s1">UserInterface::listMessages()</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(optiune == </span><span class="s5">8</span><span class="s1">)</span>
+            <span class="s1">UserInterface::addFriendship()</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(optiune == </span><span class="s5">9</span><span class="s1">)</span>
+            <span class="s1">UserInterface::removeFriendship()</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(optiune == </span><span class="s5">10</span><span class="s1">)</span>
+            <span class="s1">UserInterface::listFriends()</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(optiune == </span><span class="s5">11</span><span class="s1">)</span>
+            <span class="s4">break;</span>
+        <span class="s1">UserInterface::showMenu()</span><span class="s4">;</span>
+        <span class="s1">cout &lt;&lt; </span><span class="s3">&quot;Introduceti optiunea dorita aici:&quot; </span><span class="s1">&lt;&lt; endl</span><span class="s4">;</span>
+        <span class="s1">cin &gt;&gt; optiune</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

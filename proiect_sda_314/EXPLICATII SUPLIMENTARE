@@ -1,0 +1,94 @@
+Eu am avut de implementt urmatoarele 2 TAD-uri:
+-1.lista cu elemente generice cu reprezentare pe array
+-6.multime ordonata cu elemente generice cu  reprezentare folosind un arbore binar de cautare
+Voi explica cum am gandit logic proiectul.
+1. Am implementat in Array.h acest container. In mod normal
+ ca atribute am pus dimensiunea maxima a listei, dimensiunea curenta,
+ elementele de tipul T alocate dinamic si o metoda resize prin care 
+fac o redimensionare a listei in cazul in care se depaseste dimensiunea curenta.
+Apoi, mi-am implementat (la fel ca laboratoarele de la OOP de altfel ,
+am facut setteri, getteri, destructor, constructor de copiere.). voi explica ce am facut pe rand
+la fiecare metoda.
+-constructor fara parametrii:am initializat dim curenta cu 0,
+cea maxima cu 100, si am realocat vectorul de elemente
+-constructor de copiere: am copiat informatia din lista de elemente generice a
+in lista curenta
+-destructorul (distruge informatia curenta)
+-getteri(iau informatia pe care o doresc)
+-setteri(setez informatia curenta la o valoare dorita de mine)
+-add (adauga un element de tipul T in lista)
+-remove(sterge un element din lista)
+-set(seteaza un element la o pozitie pe care utilizatorul o da)
+-operatorul de egalitate
+-operatorul de atribuire
+-findElement->returneaza pozitia pe care e situat un element sau -1 in caz contrar
+-verifUpdate/verifDelete->verifica daca se poate actualiza/sterge un element din lista
+-afisare->afiseaza elementele din lista
+-resize(realoc spatiu pt lista)
+Dar pana la urma care e scopul definirii acestei clase?
+Ei bine, am folosit-o in Repository, atunci cand am definit "o lista" de prietenii,
+respectiv de mesaje. De ce am folosit lista si nu am folosit al 6-lea tad?
+Pt ca la al 6-lea tad este o proprietate , ca elementele sa nu se repete
+(pentru ca asta inseamna multime pana la urma, elementele sa apara o singura data) si,cum
+intr-o retea nu putem avea doi utilizatori la fel,am ales sa folosesc al 6-lea TAD
+pentru reprezentarea utilizatorilor.
+Asadar , la adauga prietenie, adauga mesaj, la modificare mesaj,
+la stergere mesaj, la stergere prietenie (la toate operatiile
+de tip CRUD) am folosit reprezentarea de la primul TAD.
+!Am folosit de tip int pt ca sa evit cazul in care nu pot adauga un mesaj,
+gen sa am o verificare de genul if ( conditie ->de ex. nu gasesc utilizatorul)
+cout<<"NU POT ADAUGA!"
+
+PENTRU ACEASTA REPREZENTARE AM FOLOSIT INFORMATII DE PE INTERNET 
+UNA DINTRE SURSELE PRINCIPALE POATE FI ACCESATA LA ACEST LINK
+
+https://www.pbinfo.ro/articole/25704/arbori-binari-de-cautare
+
+6. Am folosit reprezentarea de la curs:
+ -Fisierul ABCNode.h este exact din cursul doamnei profesoare
+ -In fisierul OrderedSet.h am facut reprezentarea multimii ordonate pe baza 
+fisierului definit (ABCNode.h)
+Ce inseamna de fapt un arbore binar de cautare?
+Un arbore binar care are chei ce pot fi comparate.
+Nodurile cu chei mai mici decat valoarea x a cheii
+asociate unui anumit nod se gasesc in subarborele
+stang al acestuia . nodurile ale caror chei au valori mai mari decat x se
+gasesc in subarborele sau drept
+-o sa definesc pe rand ce face fiecare metoda in parte:
+STERGEREA 
+-se cauta nodul de sters
+-se elimina din structura
+-se reface proprietatea de arbore binar de cautare
+Cazuri pentru stergere:
+1. Nod terminal (frunza)
+2. Nod cu un singur fiu
+3. Nod cu doi fii
+Cazul 1 – nodul pe care vrem sa il stergem nu are copii ! ATUNCI il eliminam, si inlocuim legatura parintelui spre el sa
+pointeze catre NULL
+Cazul 2 – nodul de sters are 1 copil – „urcam” acel copil in arbore, modificand legatura parintelui lui
+z sa pointeze catre copilul lui z.
+Caz 3 – nodul z are 2 copii – gasim y, succesorul lui z (care sigur se gaseste in subarborele
+drept al lui z), si inlocuim pe z cu y in arbore. Restul subarborelui drept al lui z devine noul
+subarbore drept al lui y, iar subarborele stang al lui z devine subarborele stang al lui y. Acest
+caz este mai dificil, pentru ca avem si situatia in care y este copilul drept al lui z (imediat
+dupa z in arborele initial)	
+ 
+
+ADAUGAREA
+
+Adaugarea trebuie realizata in asa fel incat sa se pastreze proprietatea de la arbore binar de cautare.
+Se procedeaza astfel:
+              1. Daca arborele este NEVID:
+-daca valoarea data este aceeasi cu valoarea de la radacina renuntam (adica eu returnez 0)
+-dacă valoarea dată este mai mică decât cheia rădăcinii, se continuă cu subarborele stâng;
+-dacă valoarea dată este mai mare decât cheia rădăcinii, se continuă cu subarborele drept;
+              2. Daca arborele este VID:
+-se creează un nod nou care având cheia egală cu valoarea dată și descendenți stâng și drept NULL.
+ -Legarea nodului la subarbore se face automat, datorită transmiterii prin referință
+ a parametrului care reprezintă adresa rădăcinii.
+
+
+
+
+
+

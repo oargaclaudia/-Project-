@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Service.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Service.h</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 22.05.2022.</span>
+<span class="s0">//</span>
+
+<span class="s2">#ifndef </span><span class="s1">PROIECT_SDA_314_SERVICE_H</span>
+<span class="s2">#define </span><span class="s1">PROIECT_SDA_314_SERVICE_H</span>
+<span class="s2">#include </span><span class="s3">&quot;Repository.h&quot;</span>
+<span class="s4">class </span><span class="s1">Service {</span>
+<span class="s4">private</span><span class="s1">:</span>
+    <span class="s1">Repository repository</span><span class="s4">;</span>
+<span class="s4">public</span><span class="s1">:</span>
+    <span class="s1">Service()</span><span class="s4">;</span>
+    <span class="s4">explicit </span><span class="s1">Service(</span><span class="s4">const </span><span class="s1">Repository&amp; repo)</span><span class="s4">;</span>
+    <span class="s1">~Service() = </span><span class="s4">default;</span>
+    <span class="s1">Service&amp; </span><span class="s4">operator</span><span class="s1">=(</span><span class="s4">const </span><span class="s1">Service&amp;service)</span><span class="s4">;</span>
+
+    <span class="s1">Array&lt;Friendship&gt; getRelatiiPrietenie()</span><span class="s4">;</span>
+    <span class="s1">Array&lt;Message&gt; getMesaje()</span><span class="s4">;</span>
+    <span class="s1">OrderedSet&lt;User&gt; getUtilizatori()</span><span class="s4">;</span>
+
+
+    <span class="s4">int </span><span class="s1">adaugaUtilizator(</span><span class="s4">const </span><span class="s1">string &amp;id</span><span class="s4">,const </span><span class="s1">string &amp;username</span><span class="s4">,const </span><span class="s1">string &amp;nume</span><span class="s4">,const </span><span class="s1">string &amp;prenume</span><span class="s4">,const </span><span class="s1">string &amp;email</span><span class="s4">,const </span><span class="s1">string &amp;parola</span><span class="s4">,const </span><span class="s1">string &amp;blibliografie</span><span class="s4">,const </span><span class="s1">string &amp;inf_suplimentare)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">stergereUtilizator(string &amp;id</span><span class="s4">, </span><span class="s1">string &amp;username</span><span class="s4">, </span><span class="s1">string &amp;nume</span><span class="s4">, </span><span class="s1">string &amp;prenume</span><span class="s4">, </span><span class="s1">string &amp;email</span><span class="s4">, </span><span class="s1">string &amp;parola</span><span class="s4">, </span><span class="s1">string &amp;blibliografie</span><span class="s4">, </span><span class="s1">string &amp;inf_suplimentare)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">gasesteUtilizator(string &amp;id</span><span class="s4">, </span><span class="s1">string &amp;username</span><span class="s4">, </span><span class="s1">string &amp;nume</span><span class="s4">, </span><span class="s1">string &amp;prenume</span><span class="s4">, </span><span class="s1">string &amp;email</span><span class="s4">, </span><span class="s1">string &amp;parola</span><span class="s4">, </span><span class="s1">string &amp;blibliografie</span><span class="s4">, </span><span class="s1">string &amp;inf_suplimentare)</span><span class="s4">;</span>
+
+    <span class="s4">int </span><span class="s1">adaugaPrietenie(</span><span class="s4">const </span><span class="s1">string &amp;id</span><span class="s4">,const </span><span class="s1">string &amp;username</span><span class="s4">,const </span><span class="s1">string &amp;nume</span><span class="s4">,const </span><span class="s1">string &amp;prenume</span><span class="s4">,const </span><span class="s1">string &amp;email</span><span class="s4">,const </span><span class="s1">string &amp;parola</span><span class="s4">,const </span><span class="s1">string &amp;blibliografie</span><span class="s4">,const </span><span class="s1">string &amp;inf_suplimentare</span><span class="s4">,const </span><span class="s1">string &amp;id2</span><span class="s4">,const </span><span class="s1">string &amp;username2</span><span class="s4">,const </span><span class="s1">string &amp;nume2</span><span class="s4">,const </span><span class="s1">string &amp;prenume2</span><span class="s4">,const </span><span class="s1">string &amp;email2</span><span class="s4">,const </span><span class="s1">string &amp;parola2</span><span class="s4">,const </span><span class="s1">string &amp;blibliografie2</span><span class="s4">,const </span><span class="s1">string &amp;inf_suplimentare2)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">stergerePrietenie(string &amp;id</span><span class="s4">, </span><span class="s1">string &amp;username</span><span class="s4">, </span><span class="s1">string &amp;nume</span><span class="s4">, </span><span class="s1">string &amp;prenume</span><span class="s4">, </span><span class="s1">string &amp;email</span><span class="s4">, </span><span class="s1">string &amp;parola</span><span class="s4">, </span><span class="s1">string &amp;blibliografie</span><span class="s4">, </span><span class="s1">string &amp;inf_suplimentare</span><span class="s4">,</span><span class="s1">string &amp;id2</span><span class="s4">, </span><span class="s1">string &amp;username2</span><span class="s4">, </span><span class="s1">string &amp;nume2</span><span class="s4">, </span><span class="s1">string &amp;prenume2</span><span class="s4">, </span><span class="s1">string &amp;email2</span><span class="s4">, </span><span class="s1">string &amp;parola2</span><span class="s4">, </span><span class="s1">string &amp;blibliografie2</span><span class="s4">, </span><span class="s1">string &amp;inf_suplimentare2)</span><span class="s4">;</span>
+
+    <span class="s4">int </span><span class="s1">adaugaMesaj(</span><span class="s4">const </span><span class="s1">string &amp;id</span><span class="s4">,const </span><span class="s1">string &amp;username</span><span class="s4">,const </span><span class="s1">string &amp;nume</span><span class="s4">,const </span><span class="s1">string &amp;prenume</span><span class="s4">,const </span><span class="s1">string &amp;email</span><span class="s4">,const </span><span class="s1">string &amp;parola</span><span class="s4">,const </span><span class="s1">string &amp;blibliografie</span><span class="s4">,const </span><span class="s1">string &amp;inf_suplimentare</span><span class="s4">,const </span><span class="s1">string &amp;id2</span><span class="s4">,const </span><span class="s1">string &amp;username2</span><span class="s4">,const </span><span class="s1">string &amp;nume2</span><span class="s4">,const </span><span class="s1">string &amp;prenume2</span><span class="s4">,const </span><span class="s1">string &amp;email2</span><span class="s4">,const </span><span class="s1">string &amp;parola2</span><span class="s4">,const </span><span class="s1">string &amp;blibliografie2</span><span class="s4">,const </span><span class="s1">string &amp;inf_suplimentare2</span><span class="s4">,const </span><span class="s1">string &amp;text)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">stergereMesaj(string &amp;text</span><span class="s4">, </span><span class="s1">string &amp;id</span><span class="s4">, </span><span class="s1">string &amp;username</span><span class="s4">, </span><span class="s1">string &amp;nume</span><span class="s4">, </span><span class="s1">string &amp;prenume</span><span class="s4">, </span><span class="s1">string &amp;email</span><span class="s4">, </span><span class="s1">string &amp;parola</span><span class="s4">, </span><span class="s1">string &amp;blibliografie</span><span class="s4">, </span><span class="s1">string &amp;inf_suplimentare</span><span class="s4">,</span><span class="s1">string &amp;id2</span><span class="s4">, </span><span class="s1">string &amp;username2</span><span class="s4">, </span><span class="s1">string &amp;nume2</span><span class="s4">, </span><span class="s1">string &amp;prenume2</span><span class="s4">, </span><span class="s1">string &amp;email2</span><span class="s4">, </span><span class="s1">string &amp;parola2</span><span class="s4">, </span><span class="s1">string &amp;blibliografie2</span><span class="s4">, </span><span class="s1">string &amp;inf_suplimentare2)</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">modificaMesaj(string &amp;textVechi</span><span class="s4">, </span><span class="s1">string &amp;id</span><span class="s4">, </span><span class="s1">string &amp;username</span><span class="s4">, </span><span class="s1">string &amp;nume</span><span class="s4">, </span><span class="s1">string &amp;prenume</span><span class="s4">, </span><span class="s1">string &amp;email</span><span class="s4">, </span><span class="s1">string &amp;parola</span><span class="s4">, </span><span class="s1">string &amp;blibliografie</span><span class="s4">, </span><span class="s1">string &amp;inf_suplimentare</span><span class="s4">,</span><span class="s1">string &amp;id2</span><span class="s4">, </span><span class="s1">string &amp;username2</span><span class="s4">, </span><span class="s1">string &amp;nume2</span><span class="s4">, </span><span class="s1">string &amp;prenume2</span><span class="s4">, </span><span class="s1">string &amp;email2</span><span class="s4">, </span><span class="s1">string &amp;parola2</span><span class="s4">, </span><span class="s1">string &amp;blibliografie2</span><span class="s4">, </span><span class="s1">string &amp;inf_suplimentare2</span><span class="s4">, </span><span class="s1">string &amp;textNou)</span><span class="s4">;</span>
+
+<span class="s1">}</span><span class="s4">;</span>
+
+
+
+<span class="s2">#endif </span><span class="s0">//PROIECT_SDA_314_SERVICE_H</span>
+</pre>
+</body>
+</html>

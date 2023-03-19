@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>Message.cpp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #bbb529;}
+.s2 { color: #6a8759;}
+.s3 { color: #808080;}
+.s4 { color: #cc7832;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Message.cpp</font>
+</center></td></tr></table>
+<pre>
+<span class="s1">#include </span><span class="s2">&quot;Message.h&quot;</span>
+<span class="s3">//constructorul fara parametrii, adica cel implicit</span>
+<span class="s0">Message::Message() {</span>
+
+    <span class="s4">this</span><span class="s0">-&gt;text = </span><span class="s2">&quot;&quot;</span><span class="s4">;</span>
+
+<span class="s0">}</span>
+
+<span class="s3">//constructorul cu parametrii</span>
+<span class="s0">Message::Message(</span><span class="s4">const </span><span class="s0">User &amp;sender</span><span class="s4">, const </span><span class="s0">User &amp;receiver</span><span class="s4">, const </span><span class="s0">string &amp;text) {</span>
+    <span class="s4">this</span><span class="s0">-&gt;text = text</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s0">-&gt;sender = sender</span><span class="s4">;</span>
+    <span class="s4">this</span><span class="s0">-&gt;receiver = receiver</span><span class="s4">;</span>
+<span class="s0">}</span>
+
+<span class="s3">//destructorul</span>
+<span class="s0">Message::~Message() = </span><span class="s4">default;</span>
+
+
+<span class="s3">//getterii</span>
+<span class="s0">string&amp; Message::getText() {</span>
+    <span class="s4">return this</span><span class="s0">-&gt;text</span><span class="s4">;</span>
+<span class="s0">}</span>
+
+<span class="s0">User&amp; Message::getReceiver() {</span>
+    <span class="s4">return this</span><span class="s0">-&gt;receiver</span><span class="s4">;</span>
+<span class="s0">}</span>
+
+<span class="s0">User&amp; Message::getSender() {</span>
+    <span class="s4">return this</span><span class="s0">-&gt;sender</span><span class="s4">;</span>
+<span class="s0">}</span>
+
+<span class="s3">//setterii</span>
+<span class="s4">void </span><span class="s0">Message::setText(</span><span class="s4">const </span><span class="s0">string &amp;t) {</span>
+    <span class="s4">this</span><span class="s0">-&gt;text= t</span><span class="s4">;</span>
+<span class="s0">}</span>
+
+<span class="s4">void </span><span class="s0">Message::setSender(</span><span class="s4">const </span><span class="s0">User &amp;s) {</span>
+    <span class="s4">this</span><span class="s0">-&gt;sender = s</span><span class="s4">;</span>
+<span class="s0">}</span>
+
+<span class="s4">void </span><span class="s0">Message::setReceiver(</span><span class="s4">const </span><span class="s0">User &amp;r) {</span>
+    <span class="s4">this</span><span class="s0">-&gt;receiver = r</span><span class="s4">;</span>
+<span class="s0">}</span>
+
+<span class="s3">//operatorul de atribuire</span>
+<span class="s0">Message &amp;Message::</span><span class="s4">operator</span><span class="s0">=(</span><span class="s4">const </span><span class="s0">Message &amp;m) {</span>
+    <span class="s4">if </span><span class="s0">(</span><span class="s4">this</span><span class="s0">!=&amp;m)</span>
+    <span class="s0">{</span><span class="s4">this</span><span class="s0">-&gt;text=m.text</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s0">-&gt;sender = m.sender</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s0">-&gt;receiver= m.receiver</span><span class="s4">;</span>
+    <span class="s0">}</span>
+    <span class="s4">return </span><span class="s0">*</span><span class="s4">this;</span>
+<span class="s0">}</span>
+
+<span class="s3">//operatorul de egalitate</span>
+<span class="s4">bool </span><span class="s0">Message::</span><span class="s4">operator</span><span class="s0">==(</span><span class="s4">const </span><span class="s0">Message &amp;alt_mesaj) {</span>
+    <span class="s4">return </span><span class="s0">(</span><span class="s4">this</span><span class="s0">-&gt;text == alt_mesaj.text &amp;&amp; </span><span class="s4">this</span><span class="s0">-&gt;sender == alt_mesaj.sender &amp;&amp; </span><span class="s4">this</span><span class="s0">-&gt;receiver == alt_mesaj.receiver)</span><span class="s4">;</span>
+<span class="s0">}</span>
+
+<span class="s3">//operatorul &lt;&lt;</span>
+<span class="s0">ostream &amp;</span><span class="s4">operator</span><span class="s0">&lt;&lt;(ostream &amp;os</span><span class="s4">, </span><span class="s0">Message mesaj) {</span>
+    <span class="s0">os&lt;&lt;</span><span class="s2">&quot;Cel care trimite mesajul: &quot; </span><span class="s0">&lt;&lt; mesaj.sender</span><span class="s4">;</span>
+    <span class="s0">os&lt;&lt;</span><span class="s2">&quot;Cel care primeste mesajul: &quot;</span><span class="s0">&lt;&lt;mesaj.receiver</span><span class="s4">;</span>
+    <span class="s0">os&lt;&lt;</span><span class="s2">&quot;Mesajul trimis: &quot;</span><span class="s0">&lt;&lt;mesaj.text</span><span class="s4">;</span>
+    <span class="s4">return </span><span class="s0">os</span><span class="s4">;</span>
+<span class="s0">}</span>
+
+<span class="s3">//operatorul !=</span>
+<span class="s4">bool </span><span class="s0">Message::</span><span class="s4">operator</span><span class="s0">!=(</span><span class="s4">const </span><span class="s0">Message &amp;alt_mesaj) {</span>
+    <span class="s4">return </span><span class="s0">!(*</span><span class="s4">this</span><span class="s0">==alt_mesaj)</span><span class="s4">;</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>

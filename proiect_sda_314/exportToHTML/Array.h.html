@@ -1,0 +1,176 @@
+<html>
+<head>
+<title>Array.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+.s5 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Array.h</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 21.05.2022.</span>
+<span class="s0">//</span>
+
+<span class="s2">#ifndef </span><span class="s1">PROIECT_SDA_314_ARRAY_H</span>
+<span class="s2">#define </span><span class="s1">PROIECT_SDA_314_ARRAY_H</span>
+<span class="s2">#include </span><span class="s3">&lt;iostream&gt;</span>
+<span class="s4">using namespace </span><span class="s1">std</span><span class="s4">;</span>
+<span class="s4">template </span><span class="s1">&lt;</span><span class="s4">typename </span><span class="s1">T&gt;</span>
+
+<span class="s0">//implementare TAD de la prima cerinta,si anume:</span>
+<span class="s0">//lista cu reprezentare pe array</span>
+
+<span class="s4">class </span><span class="s1">Array {</span>
+<span class="s4">private</span><span class="s1">:</span>
+    <span class="s0">//atribute</span>
+    <span class="s4">int </span><span class="s1">dimMax</span><span class="s4">; </span><span class="s0">//dimensiunea maxima a listei</span>
+    <span class="s4">int </span><span class="s1">dimCurenta</span><span class="s4">; </span><span class="s0">//dimensiunea curenta a listei</span>
+    <span class="s1">T* elemente</span><span class="s4">; </span><span class="s0">//vectorul elementele de elemente alocat dinamic de tipul T</span>
+    <span class="s4">void </span><span class="s1">resize()</span><span class="s4">; </span><span class="s0">//resize la lista, in cazul in care vom avea nevoie, desi cum eu am m=pus dimensiunea maxima de 100,</span>
+    <span class="s0">//nu prea cred ca o sa fie nevoie de un resize</span>
+<span class="s4">public</span><span class="s1">:</span>
+    <span class="s0">//constructorul fara parametrii</span>
+    <span class="s1">Array(){</span>
+        <span class="s4">this</span><span class="s1">-&gt;dimCurenta=</span><span class="s5">0</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;dimMax=</span><span class="s5">100</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;elemente= </span><span class="s4">new </span><span class="s1">T[</span><span class="s4">this</span><span class="s1">-&gt;dimMax]</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//operatorul de copiere</span>
+    <span class="s1">Array(</span><span class="s4">const </span><span class="s1">Array&lt;T&gt; &amp;a)</span>
+    <span class="s1">{</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta = a.dimCurenta</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;dimMax = a.dimMax</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;elemente = </span><span class="s4">new </span><span class="s1">T[</span><span class="s4">this</span><span class="s1">-&gt;dimMax]</span><span class="s4">;</span>
+        <span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i=</span><span class="s5">0</span><span class="s4">;</span><span class="s1">i&lt;</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta</span><span class="s4">;</span><span class="s1">i++)</span>
+            <span class="s4">this</span><span class="s1">-&gt;elemente[i]=a.elemente[i]</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//destructorul</span>
+    <span class="s1">~Array()</span><span class="s4">;</span>
+
+    <span class="s0">//getteri</span>
+    <span class="s4">int </span><span class="s1">GetDimCurenta()</span>
+    <span class="s1">{</span><span class="s4">return this</span><span class="s1">-&gt;dimCurenta</span><span class="s4">;</span>
+    <span class="s1">}</span>
+    <span class="s4">int </span><span class="s1">getDimMaxima()</span>
+    <span class="s1">{</span><span class="s4">return this</span><span class="s1">-&gt;dimMax</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//adauga un element de tipul T in lista</span>
+    <span class="s4">void </span><span class="s1">add(</span><span class="s4">const </span><span class="s1">T&amp; element)</span>
+    <span class="s1">{</span><span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta &lt; </span><span class="s4">this</span><span class="s1">-&gt;dimMax )</span>
+            <span class="s4">this</span><span class="s1">-&gt;elemente[</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta++]=element</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//sterge un element de la o anumita pozitie</span>
+    <span class="s4">void </span><span class="s1">remove(</span><span class="s4">int </span><span class="s1">pozitie)</span>
+    <span class="s1">{</span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = pozitie</span><span class="s4">; </span><span class="s1">i&lt;</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta-</span><span class="s5">1</span><span class="s4">;</span><span class="s1">i++)</span>
+            <span class="s4">this</span><span class="s1">-&gt;elemente[i]=</span><span class="s4">this</span><span class="s1">-&gt;elemente[i+</span><span class="s5">1</span><span class="s1">]</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;dimCurenta--</span><span class="s4">;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">//seteaza un element la o anumita pozitie</span>
+    <span class="s4">void </span><span class="s1">set(</span><span class="s4">int </span><span class="s1">pozitie</span><span class="s4">, const </span><span class="s1">T&amp; element)</span>
+    <span class="s1">{</span><span class="s4">this</span><span class="s1">-&gt;elemente[pozitie] = element</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//getter (da-mi elementul de la pozitia pe care eu o vreau)</span>
+    <span class="s1">T getItem(</span><span class="s4">int </span><span class="s1">pozitie)</span>
+    <span class="s1">{</span><span class="s4">return this</span><span class="s1">-&gt;elemente[pozitie]</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//operatorul de atribuire</span>
+    <span class="s1">Array&amp; </span><span class="s4">operator</span><span class="s1">=(</span><span class="s4">const </span><span class="s1">Array&lt;T&gt; &amp;e)</span>
+    <span class="s1">{</span><span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">!=&amp;e)</span>
+        <span class="s1">{</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta=e.dimCurenta</span><span class="s4">;</span>
+            <span class="s4">this</span><span class="s1">-&gt;dimMax = e.dimMax</span><span class="s4">;</span>
+        <span class="s1">}</span>
+        <span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;elemente)</span>
+            <span class="s4">delete</span><span class="s1">[] </span><span class="s4">this</span><span class="s1">-&gt;elemente</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;elemente = </span><span class="s4">new </span><span class="s1">T[</span><span class="s4">this</span><span class="s1">-&gt;dimMax]</span><span class="s4">;</span>
+        <span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i=</span><span class="s5">0</span><span class="s4">;</span><span class="s1">i&lt;</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta</span><span class="s4">;</span><span class="s1">i++)</span>
+            <span class="s4">this</span><span class="s1">-&gt;elemente[i]=e.elemente[i]</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//operatorul de egalitate</span>
+    <span class="s4">bool operator</span><span class="s1">==(</span><span class="s4">const </span><span class="s1">Array&lt;T&gt; &amp;a)</span>
+    <span class="s1">{</span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i=</span><span class="s5">0</span><span class="s4">;</span><span class="s1">i&lt;</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta</span><span class="s4">;</span><span class="s1">i++)</span>
+            <span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;elemente[i]!=a.elemente[i])</span>
+                <span class="s4">return false;</span>
+        <span class="s4">return true;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//returneaza pozitia pe care se gaseste elementul dat de mine sau returneaza -1 daca el nu se afla in lista</span>
+    <span class="s4">int </span><span class="s1">findElement(</span><span class="s4">const </span><span class="s1">T&amp; element)</span>
+    <span class="s1">{</span><span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i=</span><span class="s5">0</span><span class="s4">;</span><span class="s1">i&lt;</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta</span><span class="s4">;</span><span class="s1">i++)</span>
+            <span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;elemente[i]==element)</span>
+                <span class="s4">return </span><span class="s1">i</span><span class="s4">;</span>
+        <span class="s4">return </span><span class="s1">-</span><span class="s5">1</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//verifica daca s-a putut sterge un element din lista returnand 1 sau 0 in caz contrar</span>
+    <span class="s4">int </span><span class="s1">verifDelete(</span><span class="s4">const </span><span class="s1">T&amp; element){</span>
+        <span class="s4">int </span><span class="s1">pozitie = </span><span class="s4">this</span><span class="s1">-&gt;findElement(element)</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(pozitie == -</span><span class="s5">1</span><span class="s1">)</span>
+            <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+        <span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = pozitie</span><span class="s4">; </span><span class="s1">i&lt; </span><span class="s4">this</span><span class="s1">-&gt;dimCurenta</span><span class="s4">; </span><span class="s1">i++)</span>
+            <span class="s4">this</span><span class="s1">-&gt;elemente[i]=</span><span class="s4">this</span><span class="s1">-&gt;elemente[i+</span><span class="s5">1</span><span class="s1">]</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;dimCurenta--</span><span class="s4">;</span>
+        <span class="s4">return </span><span class="s5">1</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//actualizeaza un element pe care eu il dau de la tastatura</span>
+    <span class="s0">//daca nu se poate face actualizarea in sensul ca eu nu gasesc elementul in lista voi returna -1</span>
+    <span class="s4">int </span><span class="s1">verifUpdate(</span><span class="s4">const </span><span class="s1">T&amp; element_vechi</span><span class="s4">, const </span><span class="s1">T&amp; element_nou)</span>
+    <span class="s1">{</span><span class="s4">int </span><span class="s1">pozitie = </span><span class="s4">this</span><span class="s1">-&gt;findElement(element_vechi)</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(pozitie == -</span><span class="s5">1</span><span class="s1">)</span>
+            <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;elemente[pozitie]= element_nou</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">//afiseaza elementele din lista</span>
+    <span class="s4">void </span><span class="s1">afisare()</span>
+    <span class="s1">{</span>
+        <span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i=</span><span class="s5">0</span><span class="s4">;</span><span class="s1">i&lt;</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta</span><span class="s4">;</span><span class="s1">i++)</span>
+            <span class="s1">cout&lt;&lt;</span><span class="s4">this</span><span class="s1">-&gt;getItem(i)&lt;&lt;endl</span><span class="s4">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span><span class="s4">;</span>
+<span class="s4">template </span><span class="s1">&lt;</span><span class="s4">class </span><span class="s1">T&gt;</span>
+<span class="s0">//aici fac resize la lista</span>
+<span class="s0">//gen daca nu imi incap elemente in lista curenta</span>
+<span class="s0">//adica daca se depaseste dimensiunea maxima</span>
+<span class="s0">//imi dublez lista</span>
+<span class="s4">void </span><span class="s1">Array&lt;T&gt;::resize() {</span>
+    <span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;dimCurenta &gt; dimMax)</span>
+    <span class="s1">{</span><span class="s4">this</span><span class="s1">-&gt;dimMax *= </span><span class="s5">2</span><span class="s4">;</span>
+        <span class="s1">T* temporary</span><span class="s4">;</span>
+        <span class="s1">temporary = </span><span class="s4">new </span><span class="s1">T[</span><span class="s4">this</span><span class="s1">-&gt;dimMax]</span><span class="s4">;</span>
+        <span class="s4">for </span><span class="s1">(</span><span class="s4">int </span><span class="s1">i = </span><span class="s5">0</span><span class="s4">; </span><span class="s1">i &lt; </span><span class="s4">this</span><span class="s1">-&gt;dimCurenta</span><span class="s4">; </span><span class="s1">i++)</span>
+            <span class="s1">temporary[i] = </span><span class="s4">this</span><span class="s1">-&gt;temporary[i]</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;elemente)</span>
+            <span class="s4">delete</span><span class="s1">[]</span><span class="s4">this</span><span class="s1">-&gt;elemente</span><span class="s4">;</span>
+        <span class="s4">this</span><span class="s1">-&gt;elemente = temporary</span><span class="s4">;</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+<span class="s4">template</span><span class="s1">&lt;</span><span class="s4">typename </span><span class="s1">T&gt;</span>
+<span class="s0">//destructorul de la lista</span>
+<span class="s1">Array&lt;T&gt;::~Array() {</span>
+<span class="s1">}</span>
+
+<span class="s2">#endif </span><span class="s0">//PROIECT_SDA_314_ARRAY_H</span>
+</pre>
+</body>
+</html>

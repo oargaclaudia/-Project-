@@ -1,0 +1,94 @@
+<html>
+<head>
+<title>User.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+User.h</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 21.05.2022.</span>
+<span class="s0">//</span>
+
+<span class="s2">#ifndef </span><span class="s1">PROIECT_SDA_314_USER_H</span>
+<span class="s2">#define </span><span class="s1">PROIECT_SDA_314_USER_H</span>
+<span class="s2">#include </span><span class="s3">&lt;iostream&gt;</span>
+<span class="s2">#include </span><span class="s3">&lt;string&gt;</span>
+
+<span class="s4">class </span><span class="s1">User {</span>
+<span class="s4">private</span><span class="s1">:</span>
+    <span class="s1">std::string idUtilizator</span><span class="s4">;</span>
+    <span class="s1">std::string username</span><span class="s4">;</span>
+    <span class="s1">std::string nume</span><span class="s4">;</span>
+    <span class="s1">std::string prenume</span><span class="s4">;</span>
+    <span class="s1">std::string email</span><span class="s4">;</span>
+    <span class="s1">std::string parola</span><span class="s4">;</span>
+    <span class="s1">std::string bibliografie</span><span class="s4">;</span>
+    <span class="s1">std::string inf_suplimentare</span><span class="s4">;</span>
+<span class="s4">public</span><span class="s1">:</span>
+    <span class="s1">User()</span><span class="s4">; </span><span class="s0">//constructor fara parametrii</span>
+    <span class="s1">User(</span><span class="s4">const </span><span class="s1">std::string&amp; idUtilizator</span><span class="s4">, const </span><span class="s1">std::string&amp; username</span><span class="s4">, const </span><span class="s1">std::string&amp; nume</span><span class="s4">, const </span><span class="s1">std::string&amp; prenume</span><span class="s4">, const </span><span class="s1">std::string&amp; email</span><span class="s4">, const </span><span class="s1">std::string&amp; parola</span><span class="s4">, const </span><span class="s1">std::string&amp; bibliografie</span><span class="s4">, const </span><span class="s1">std::string&amp; info_suplimentare)</span><span class="s4">;</span><span class="s0">//constructor cu parametrii</span>
+    <span class="s1">User(</span><span class="s4">const </span><span class="s1">User&amp; alt_utilizator)</span><span class="s4">; </span><span class="s0">//constructor de copiere</span>
+    <span class="s1">~User()</span><span class="s4">; </span><span class="s0">// destructor</span>
+
+    <span class="s0">//aici vom defini getteri</span>
+    <span class="s1">std::string getIdUtilizator()</span><span class="s4">;</span>
+    <span class="s1">std::string getUsername()</span><span class="s4">;</span>
+    <span class="s1">std::string getNume()</span><span class="s4">;</span>
+    <span class="s1">std::string getPrenume()</span><span class="s4">;</span>
+    <span class="s1">std::string getEmail()</span><span class="s4">;</span>
+    <span class="s1">std::string getParola()</span><span class="s4">;</span>
+    <span class="s1">std::string getBibliografie()</span><span class="s4">;</span>
+    <span class="s1">std::string getInfoSuplimentare()</span><span class="s4">;</span>
+
+    <span class="s0">//aici vom defini setteri</span>
+
+    <span class="s4">void </span><span class="s1">setIdUtilizator(</span><span class="s4">const </span><span class="s1">std::string&amp; idUtilizator)</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">setUsername(</span><span class="s4">const </span><span class="s1">std::string&amp; username)</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">setNume(</span><span class="s4">const </span><span class="s1">std::string&amp; nume)</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">setPrenume(</span><span class="s4">const </span><span class="s1">std::string&amp; prenume)</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">setEmail(</span><span class="s4">const </span><span class="s1">std::string&amp; email)</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">setParola(</span><span class="s4">const </span><span class="s1">std::string&amp; parola)</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">setBibliografie(</span><span class="s4">const </span><span class="s1">std::string&amp; bibliografie)</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">setInfoSuplimentare(</span><span class="s4">const </span><span class="s1">std::string&amp; info_suplimentare)</span><span class="s4">;</span>
+
+    <span class="s0">//supraincarcam operatorul de citire, respectiv iesire</span>
+    <span class="s4">friend </span><span class="s1">std::ostream&amp; </span><span class="s4">operator</span><span class="s1">&lt;&lt;(std::ostream&amp; os</span><span class="s4">,  const </span><span class="s1">User&amp; utilizator)</span><span class="s4">;</span>
+    <span class="s4">friend </span><span class="s1">std::istream&amp; </span><span class="s4">operator</span><span class="s1">&gt;&gt;(std::istream&amp; is</span><span class="s4">, </span><span class="s1">User&amp; utilizator)</span><span class="s4">;</span>
+
+    <span class="s0">//aici ne definim acele metode prin care vom putea sa realizam citiri/operatii pe fisiere</span>
+
+    <span class="s4">friend </span><span class="s1">std::ostream&amp; loadIntoCSV(std::ostream&amp; os</span><span class="s4">,  </span><span class="s1">User&amp; utilizator)</span><span class="s4">;</span>
+    <span class="s4">friend </span><span class="s1">std::istream&amp; loadFromCSV(std::istream&amp; is</span><span class="s4">, </span><span class="s1">User&amp; utilizator)</span><span class="s4">;</span>
+
+    <span class="s0">//supraincarcam operatorul de egalitate (==)</span>
+    <span class="s4">bool operator</span><span class="s1">==(</span><span class="s4">const </span><span class="s1">User&amp; alt_utilizator)</span><span class="s4">;</span>
+
+    <span class="s0">//supraincarcam operatorul &gt;</span>
+    <span class="s4">bool operator</span><span class="s1">&gt;(</span><span class="s4">const </span><span class="s1">User&amp; alt_utilizator)</span><span class="s4">;</span>
+
+    <span class="s0">//supraincarcam operatorul &lt;</span>
+    <span class="s4">bool operator</span><span class="s1">&lt;(</span><span class="s4">const </span><span class="s1">User&amp; alt_utilizator)</span><span class="s4">;</span>
+
+    <span class="s0">//supraincarcam operatorul !=</span>
+    <span class="s4">bool operator</span><span class="s1">!=(</span><span class="s4">const </span><span class="s1">User&amp; alt_utilizator)</span><span class="s4">;</span>
+
+    <span class="s0">//supraincarcam operatorul de atribuire</span>
+    <span class="s1">User&amp; </span><span class="s4">operator</span><span class="s1">=(</span><span class="s4">const </span><span class="s1">User&amp;)</span><span class="s4">;</span>
+
+<span class="s1">}</span><span class="s4">;</span>
+
+<span class="s2">#endif </span><span class="s0">//PROIECT_SDA_314_USER_H</span>
+</pre>
+</body>
+</html>

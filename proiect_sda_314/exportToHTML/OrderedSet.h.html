@@ -1,0 +1,148 @@
+<html>
+<head>
+<title>OrderedSet.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+.s5 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+OrderedSet.h</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 22.05.2022.</span>
+<span class="s0">//</span>
+
+<span class="s2">#ifndef </span><span class="s1">PROIECT_SDA_314_ORDEREDSET_H</span>
+<span class="s2">#define </span><span class="s1">PROIECT_SDA_314_ORDEREDSET_H</span>
+<span class="s2">#include </span><span class="s3">&quot;ABCNode.h&quot;</span>
+<span class="s2">#include </span><span class="s3">&quot;User.h&quot;</span>
+<span class="s2">#include </span><span class="s3">&lt;iostream&gt;</span>
+<span class="s2">#include </span><span class="s3">&lt;vector&gt;</span>
+<span class="s4">using namespace </span><span class="s1">std</span><span class="s4">;</span>
+<span class="s4">template</span><span class="s1">&lt;</span><span class="s4">class </span><span class="s1">T&gt;</span>
+<span class="s4">class </span><span class="s1">OrderedSet{</span>
+<span class="s4">private</span><span class="s1">:</span>
+    <span class="s1">ABCNode&lt;T&gt;* root</span><span class="s4">;</span>
+    <span class="s4">int </span><span class="s1">add(ABCNode&lt;T&gt;* ad</span><span class="s4">, </span><span class="s1">T elem){</span>
+        <span class="s4">if </span><span class="s1">(ad-&gt;info == elem)</span>
+            <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+        <span class="s4">if</span><span class="s1">(ad-&gt;info &gt; elem){ </span><span class="s0">// adaugam pe stanga</span>
+            <span class="s4">if</span><span class="s1">(ad-&gt;left != </span><span class="s4">nullptr</span><span class="s1">) {</span>
+                <span class="s1">add(ad-&gt;left</span><span class="s4">, </span><span class="s1">elem)</span><span class="s4">;</span>
+            <span class="s1">}</span><span class="s4">else</span><span class="s1">{</span>
+                <span class="s1">ad-&gt;left = </span><span class="s4">new </span><span class="s1">ABCNode&lt;T&gt;(elem)</span><span class="s4">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span><span class="s4">else</span><span class="s1">{  </span><span class="s0">//adaugam in dreapta</span>
+            <span class="s4">if</span><span class="s1">(ad-&gt;right != </span><span class="s4">nullptr</span><span class="s1">) {</span>
+                <span class="s1">add(ad-&gt;right</span><span class="s4">, </span><span class="s1">elem)</span><span class="s4">;</span>
+            <span class="s1">}</span><span class="s4">else</span><span class="s1">{</span>
+                <span class="s1">ad-&gt;right = </span><span class="s4">new </span><span class="s1">ABCNode&lt;T&gt;(elem)</span><span class="s4">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s4">return </span><span class="s5">1</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s4">int </span><span class="s1">sterge(ABCNode&lt;T&gt;* el</span><span class="s4">,</span><span class="s1">T elem</span><span class="s4">,</span><span class="s1">vector&lt;T&gt; &amp;a</span><span class="s4">, bool </span><span class="s1">&amp;valoare)</span>
+    <span class="s1">{</span><span class="s4">if </span><span class="s1">(el== </span><span class="s4">nullptr</span><span class="s1">)</span>
+        <span class="s1">{    valoare=</span><span class="s4">false;</span>
+            <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+        <span class="s1">}</span>
+        <span class="s4">if </span><span class="s1">(el-&gt;info == elem)</span>
+        <span class="s1">{valoare=</span><span class="s4">true;</span><span class="s1">}</span>
+        <span class="s4">else</span>
+            <span class="s1">a.push_back(el-&gt;info)</span><span class="s4">;</span>
+        <span class="s0">//acum suntem responsabili sa tratam partea dreapta, respectiv stanga a</span>
+        <span class="s4">if </span><span class="s1">(el-&gt;right != </span><span class="s4">nullptr</span><span class="s1">)</span>
+            <span class="s1">sterge(el-&gt;right</span><span class="s4">, </span><span class="s1">elem</span><span class="s4">, </span><span class="s1">a </span><span class="s4">, </span><span class="s1">valoare)</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(el-&gt;left != </span><span class="s4">nullptr</span><span class="s1">)</span>
+            <span class="s1">sterge(el-&gt;left</span><span class="s4">, </span><span class="s1">elem</span><span class="s4">, </span><span class="s1">a </span><span class="s4">, </span><span class="s1">valoare)</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(valoare)</span>
+            <span class="s4">return </span><span class="s5">1</span><span class="s4">;</span>
+        <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+    <span class="s1">}</span>
+    <span class="s4">int </span><span class="s1">size_arbore(ABCNode&lt;T&gt;* el)</span>
+    <span class="s1">{</span><span class="s4">if</span><span class="s1">(el == </span><span class="s4">nullptr</span><span class="s1">)</span>
+            <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+        <span class="s4">return </span><span class="s5">1 </span><span class="s1">+ size_arbore(el-&gt;left) + size_arbore(el-&gt;right)</span><span class="s4">;</span><span class="s1">}</span>
+
+    <span class="s4">int </span><span class="s1">find_arbore(ABCNode&lt;T&gt;* el</span><span class="s4">, </span><span class="s1">T info)</span>
+    <span class="s1">{    </span><span class="s4">if</span><span class="s1">(el == </span><span class="s4">nullptr</span><span class="s1">)</span>
+            <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+        <span class="s4">if</span><span class="s1">(el-&gt;info == info)</span>
+            <span class="s4">return </span><span class="s5">1</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(el-&gt;info &lt; info)</span>
+            <span class="s4">return </span><span class="s1">find_arbore(el-&gt;right</span><span class="s4">, </span><span class="s1">info)</span><span class="s4">;</span>
+        <span class="s4">if </span><span class="s1">(el-&gt;info &gt; info)</span>
+            <span class="s4">return </span><span class="s1">find_arbore(el-&gt;left</span><span class="s4">, </span><span class="s1">info)</span><span class="s4">;</span>
+
+    <span class="s1">}</span>
+    <span class="s4">void </span><span class="s1">afisareIN(ABCNode&lt;T&gt;* ad){</span>
+        <span class="s4">if</span><span class="s1">(ad != </span><span class="s4">nullptr</span><span class="s1">){</span>
+            <span class="s1">afisareIN(ad-&gt;left)</span><span class="s4">;</span>
+            <span class="s1">cout&lt;&lt;ad-&gt;info&lt;&lt;endl</span><span class="s4">;</span>
+            <span class="s1">afisareIN(ad-&gt;right)</span><span class="s4">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+<span class="s4">public</span><span class="s1">:</span>
+    <span class="s1">OrderedSet(){</span>
+        <span class="s4">this</span><span class="s1">-&gt;root = </span><span class="s4">nullptr;</span>
+    <span class="s1">}</span>
+
+    <span class="s4">void </span><span class="s1">afisare(){</span>
+        <span class="s1">afisareIN(</span><span class="s4">this</span><span class="s1">-&gt;root)</span><span class="s4">;</span>
+    <span class="s1">}</span>
+    <span class="s4">int </span><span class="s1">adaugare(T info){</span>
+        <span class="s4">if</span><span class="s1">(</span><span class="s4">this</span><span class="s1">-&gt;root == </span><span class="s4">nullptr</span><span class="s1">)</span>
+        <span class="s1">{</span>
+            <span class="s4">this</span><span class="s1">-&gt;root = </span><span class="s4">new </span><span class="s1">ABCNode&lt;T&gt;(info)</span><span class="s4">;</span>
+            <span class="s4">return </span><span class="s5">1</span><span class="s4">;</span>
+        <span class="s1">}</span>
+        <span class="s4">else</span>
+            <span class="s4">return </span><span class="s1">add(</span><span class="s4">this</span><span class="s1">-&gt;root</span><span class="s4">, </span><span class="s1">info)</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s4">int </span><span class="s1">stergere(T info){</span>
+        <span class="s1">OrderedSet&lt;T&gt; multime</span><span class="s4">;</span>
+        <span class="s1">vector&lt;T&gt; v</span><span class="s4">;</span>
+        <span class="s4">bool </span><span class="s1">valoare = </span><span class="s4">false;</span>
+        <span class="s4">int </span><span class="s1">rezultat = sterge(</span><span class="s4">this</span><span class="s1">-&gt;root</span><span class="s4">, </span><span class="s1">info</span><span class="s4">, </span><span class="s1">v</span><span class="s4">, </span><span class="s1">valoare)</span><span class="s4">;</span>
+        <span class="s4">while</span><span class="s1">(!v.empty())</span>
+        <span class="s1">{</span>
+            <span class="s1">multime.adaugare(v.back())</span><span class="s4">;</span>
+            <span class="s1">v.pop_back()</span><span class="s4">;</span>
+        <span class="s1">}</span>
+        <span class="s4">this</span><span class="s1">-&gt;root = multime.root</span><span class="s4">;</span>
+        <span class="s4">if</span><span class="s1">(rezultat)</span>
+            <span class="s4">return </span><span class="s5">1</span><span class="s4">;</span>
+        <span class="s4">return </span><span class="s5">0</span><span class="s4">;</span>
+
+    <span class="s1">}</span>
+    <span class="s4">int </span><span class="s1">find(</span><span class="s4">const </span><span class="s1">T el)</span>
+    <span class="s1">{    </span><span class="s4">return this</span><span class="s1">-&gt;find_arbore(</span><span class="s4">this</span><span class="s1">-&gt;root</span><span class="s4">, </span><span class="s1">el)</span><span class="s4">;</span>
+    <span class="s1">}</span>
+
+    <span class="s4">int </span><span class="s1">size()</span>
+    <span class="s1">{</span><span class="s4">return </span><span class="s1">size_arbore(</span><span class="s4">this</span><span class="s1">-&gt;root)</span><span class="s4">;</span>
+
+    <span class="s1">}</span>
+    <span class="s1">OrderedSet&lt;T&gt;&amp; </span><span class="s4">operator</span><span class="s1">=(</span><span class="s4">const </span><span class="s1">OrderedSet&lt;T&gt; &amp;multime)</span>
+    <span class="s1">{</span><span class="s4">if </span><span class="s1">(</span><span class="s4">this</span><span class="s1">!=&amp;multime)</span>
+            <span class="s4">this</span><span class="s1">-&gt;root = multime.root</span><span class="s4">;</span>
+        <span class="s4">return </span><span class="s1">*</span><span class="s4">this; </span><span class="s0">//dereferentiem ca sa afisam valoarea</span>
+    <span class="s1">}</span>
+<span class="s1">}</span><span class="s4">;</span>
+
+<span class="s2">#endif </span><span class="s0">//PROIECT_SDA_314_ORDEREDSET_H</span>
+</pre>
+</body>
+</html>

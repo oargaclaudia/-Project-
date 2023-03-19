@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Message.h</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #bbb529;}
+.s3 { color: #6a8759;}
+.s4 { color: #cc7832;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Message.h</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Created by Asus on 21.05.2022.</span>
+<span class="s0">//</span>
+
+<span class="s2">#ifndef </span><span class="s1">PROIECT_SDA_314_MESSAGE_H</span>
+<span class="s2">#define </span><span class="s1">PROIECT_SDA_314_MESSAGE_H</span>
+<span class="s2">#include </span><span class="s3">&lt;iostream&gt;</span>
+<span class="s2">#include </span><span class="s3">&quot;User.h&quot;</span>
+<span class="s4">using namespace </span><span class="s1">std</span><span class="s4">;</span>
+
+<span class="s4">class </span><span class="s1">Message {</span>
+    <span class="s0">//definim atributele</span>
+<span class="s4">private</span><span class="s1">:</span>
+    <span class="s1">string text</span><span class="s4">; </span><span class="s0">//mesajul pe care vrem sa il trimitem</span>
+    <span class="s1">User sender</span><span class="s4">; </span><span class="s0">//utilizatorul care trimite mesajul (de tip User, clasa definita anterior)</span>
+    <span class="s1">User receiver</span><span class="s4">; </span><span class="s0">//utilizatorul care primeste mesajul (de tip User, clasa definita anterior)</span>
+<span class="s4">public</span><span class="s1">:</span>
+    <span class="s1">Message()</span><span class="s4">; </span><span class="s0">//constructor fara parametrii</span>
+    <span class="s1">Message(</span><span class="s4">const </span><span class="s1">User &amp;sender</span><span class="s4">,const </span><span class="s1">User &amp;receiver</span><span class="s4">,const </span><span class="s1">string &amp;text)</span><span class="s4">; </span><span class="s0">//constructor cu parametrii</span>
+
+    <span class="s0">//ne definim getterii</span>
+    <span class="s1">string&amp; getText()</span><span class="s4">;</span>
+    <span class="s1">User&amp; getSender()</span><span class="s4">;</span>
+    <span class="s1">User&amp; getReceiver()</span><span class="s4">;</span>
+
+    <span class="s0">//ne definim setterii</span>
+    <span class="s4">void </span><span class="s1">setText(</span><span class="s4">const </span><span class="s1">string&amp; text)</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">setSender(</span><span class="s4">const </span><span class="s1">User&amp; sender)</span><span class="s4">;</span>
+    <span class="s4">void </span><span class="s1">setReceiver(</span><span class="s4">const </span><span class="s1">User&amp; receiver)</span><span class="s4">;</span>
+
+    <span class="s0">//ne supraincarcam operatorul de egalitate</span>
+    <span class="s4">bool operator</span><span class="s1">==(</span><span class="s4">const </span><span class="s1">Message &amp;alt_mesaj)</span><span class="s4">;</span>
+
+    <span class="s0">//operatorul !=</span>
+    <span class="s4">bool operator</span><span class="s1">!=(</span><span class="s4">const </span><span class="s1">Message &amp;alt_mesaj)</span><span class="s4">;</span>
+
+    <span class="s0">//operatorul de atribuire</span>
+    <span class="s1">Message&amp; </span><span class="s4">operator</span><span class="s1">=(</span><span class="s4">const </span><span class="s1">Message&amp;)</span><span class="s4">;</span>
+
+    <span class="s0">//destructorul care trebuie sa apara in fiecare clasa</span>
+    <span class="s1">~Message()</span><span class="s4">;</span>
+
+    <span class="s0">//operatorul de afisare</span>
+    <span class="s4">friend </span><span class="s1">ostream&amp; </span><span class="s4">operator</span><span class="s1">&lt;&lt;(ostream&amp; os</span><span class="s4">,  </span><span class="s1">Message mesaj)</span><span class="s4">;</span>
+<span class="s1">}</span><span class="s4">;</span>
+<span class="s2">#endif </span><span class="s0">//PROIECT_SDA_314_MESSAGE_H</span>
+</pre>
+</body>
+</html>
